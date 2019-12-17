@@ -42,12 +42,4 @@ target 'TodoListRealm' do
   use_native_modules!
 end
 
-target 'TodoListRealm-tvOS' do
-  # Pods for TodoListRealm-tvOS
 
-  target 'TodoListRealm-tvOSTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-end

@@ -7,7 +7,7 @@ export default class TodoList {
    properties: {
      id: 'int',
      name: 'string',
-     createdAt: 'date',
+     creationDate: 'date',
      todos: { type: 'list', objectType: Todo.schema }
    }
   }

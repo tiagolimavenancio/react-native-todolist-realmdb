@@ -1,7 +1,6 @@
 
 import db from '~/services/database'
 import TodoList from '~/models/TodoList'
-import Todo from '~/models/Todo'
 
 export const insertNewTodoList = newTodoList => new Promise((resolve, reject) => {
   db.then(realm => {
@@ -55,6 +54,16 @@ export const queryAllTodoList = () => new Promise((resolve, reject) => {
   db.then(realm => {
     let allTodoList = realm.objects(TodoList.schema)
     resolve(allTodoList)
+  }).catch(error => {
+    reject(error)
+  })
+})
+
+export const filterTodoList = (searchedText) => new Promise((resolve, reject) => {
+  db.then(realm => {
+    //[c] = case insensitive
+    let filteredTodoLists = realm.objects(TodoList.schema).filtered(`name CONTAINS[c] "${searchedText}"`)
+    resolve(filteredTodoLists)
   }).catch(error => {
     reject(error)
   })
